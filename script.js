@@ -142,4 +142,61 @@ function typeWriter(element, text, speed = 100) {
 
 // Apply typing effect to hero title
 const heroTitle = document.querySelector('.hero h2');
-typeWriter(heroTitle, heroTitle.textContent); 
+typeWriter(heroTitle, heroTitle.textContent);
+
+// Preloader
+window.addEventListener('load', () => {
+    const preloader = document.querySelector('.preloader');
+    preloader.style.opacity = '0';
+    setTimeout(() => {
+        preloader.style.display = 'none';
+    }, 500);
+});
+
+// Typing effect
+const typingEffect = document.querySelector('.typing-effect');
+const words = ['Software Engineer', 'AI Enthusiast', 'Cloud Developer', 'Problem Solver'];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function type() {
+    const currentWord = words[wordIndex];
+    
+    if (isDeleting) {
+        typingEffect.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typingEffect.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    if (!isDeleting && charIndex === currentWord.length) {
+        isDeleting = true;
+        setTimeout(type, 1500);
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        setTimeout(type, 500);
+    } else {
+        setTimeout(type, isDeleting ? 50 : 100);
+    }
+}
+
+type();
+
+// Animate skill bars on scroll
+const skillBars = document.querySelectorAll('.progress');
+const animateSkillBars = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.transform = 'scaleX(1)';
+        }
+    });
+};
+
+const skillObserver = new IntersectionObserver(animateSkillBars, {
+    threshold: 0.5
+});
+
+skillBars.forEach(bar => skillObserver.observe(bar)); 
