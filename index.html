@@ -24,27 +24,68 @@
         </div>
     </nav>
 
+    <!-- Add a preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="avatar">
                 <img src="./images/avatar.jpg" alt="Racha Mohan">
             </div>
             <h1>Racha Mohan Durga Venkata Narayana</h1>
-            <h2>Aspiring Software Engineer | AI & Cloud Enthusiast</h2>
+            <div class="typing-container">
+                <h2 class="typing-text">I'm a </h2>
+                <h2 class="typing-effect"></h2>
+            </div>
+            <p class="hero-description">
+                Passionate about creating innovative solutions using AI, ML, and Cloud technologies.
+                Currently pursuing B.Tech in Computer Science with a focus on emerging technologies.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn primary-btn">Get In Touch</a>
+                <a href="#portfolio" class="btn secondary-btn">View My Work</a>
+            </div>
             <div class="contact-info">
                 <a href="mailto:mohan.student51@gmail.com"><i class="fas fa-envelope"></i> mohan.student51@gmail.com</a>
                 <a href="tel:+919502084377"><i class="fas fa-phone"></i> +91-9502084377</a>
                 <p><i class="fas fa-map-marker-alt"></i> Amalapuram, Andhra Pradesh, India</p>
             </div>
         </div>
+        <div class="scroll-down">
+            <a href="#about"><i class="fas fa-chevron-down"></i></a>
+        </div>
     </section>
 
     <section id="about" class="about">
         <h2>About Me</h2>
         <div class="about-content">
-            <p>I am a passionate Computer Science student specializing in AI, ML, and Cloud technologies. 
-               With a strong foundation in software development and a keen interest in emerging technologies, 
-               I am constantly exploring new ways to innovate and create impactful solutions.</p>
+            <div class="about-text">
+                <p class="highlight">Hello! I'm a Computer Science student passionate about solving real-world problems through technology.</p>
+                <p>I specialize in:</p>
+                <ul class="specialties">
+                    <li><i class="fas fa-brain"></i> Artificial Intelligence & Machine Learning</li>
+                    <li><i class="fas fa-cloud"></i> Cloud Computing & DevOps</li>
+                    <li><i class="fas fa-code"></i> Full Stack Development</li>
+                    <li><i class="fas fa-database"></i> Data Science & Analytics</li>
+                </ul>
+                <p>Currently pursuing my B.Tech in Computer Science, I'm actively working on projects that combine these technologies to create meaningful impact.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <h3>10+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5+</h3>
+                    <p>Technologies Mastered</p>
+                </div>
+                <div class="stat-item">
+                    <h3>3+</h3>
+                    <p>Years of Learning</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -57,32 +98,42 @@
                     <h4>Bachelor of Technology in Computer Science</h4>
                     <p class="institution">Your University Name</p>
                     <p class="date">2020 - 2024</p>
+                    <ul class="achievements">
+                        <li>CGPA: X.XX/10.0</li>
+                        <li>Member of College Technical Club</li>
+                        <li>Participated in various hackathons and coding competitions</li>
+                    </ul>
                 </div>
             </div>
 
             <div class="resume-section">
-                <h3>Skills</h3>
+                <h3>Technical Skills</h3>
                 <div class="skills-grid">
                     <div class="skill-category">
                         <h4>Programming Languages</h4>
-                        <ul>
-                            <li>Python</li>
-                            <li>Java</li>
-                            <li>JavaScript</li>
-                            <li>C++</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Technologies</h4>
-                        <ul>
-                            <li>Machine Learning</li>
-                            <li>Cloud Computing</li>
-                            <li>Web Development</li>
-                            <li>Data Science</li>
-                        </ul>
+                        <div class="skill-bars">
+                            <div class="skill-bar">
+                                <span class="skill-name">Python</span>
+                                <div class="bar">
+                                    <div class="progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar">
+                                <span class="skill-name">Java</span>
+                                <div class="bar">
+                                    <div class="progress" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <!-- Add more skills with progress bars -->
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="resume-download">
+            <a href="path/to/resume.pdf" class="btn primary-btn" download>
+                <i class="fas fa-download"></i> Download CV
+            </a>
         </div>
     </section>
 
