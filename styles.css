@@ -660,4 +660,125 @@ html {
 
 .page-transition.active {
     transform: scaleY(1);
+}
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--dark-secondary);
+    border-radius: 50%;
+    border-top-color: var(--gold-accent);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Typing effect container */
+.typing-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.typing-effect {
+    color: var(--gold-accent);
+    border-right: 2px solid var(--gold-accent);
+    padding-right: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3.5s steps(30, end) infinite,
+               blink-caret 0.75s step-end infinite;
+}
+
+/* CTA Buttons */
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-btn {
+    background: var(--gold-accent);
+    color: var(--dark-bg);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--gold-accent);
+    border: 2px solid var(--gold-accent);
+}
+
+/* Skill Bars */
+.skill-bar {
+    margin-bottom: 1.5rem;
+}
+
+.skill-name {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.bar {
+    height: 10px;
+    background: var(--dark-secondary);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: var(--gold-accent);
+    border-radius: 5px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: fillBar 1.5s ease forwards;
+}
+
+@keyframes fillBar {
+    to { transform: scaleX(1); }
+}
+
+/* About Stats */
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.stat-item h3 {
+    color: var(--gold-accent);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
 } 
