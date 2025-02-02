@@ -199,4 +199,275 @@ const skillObserver = new IntersectionObserver(animateSkillBars, {
     threshold: 0.5
 });
 
-skillBars.forEach(bar => skillObserver.observe(bar)); 
+skillBars.forEach(bar => skillObserver.observe(bar));
+
+// Add animated background
+function createAnimatedBackground() {
+    const bg = document.createElement('div');
+    bg.className = 'animated-bg';
+    
+    for(let i = 0; i < 50; i++) {
+        const span = document.createElement('span');
+        span.style.width = '2px';
+        span.style.height = '2px';
+        span.style.left = Math.random() * 100 + '%';
+        span.style.top = Math.random() * 100 + '%';
+        span.style.animationDelay = Math.random() * 5 + 's';
+        bg.appendChild(span);
+    }
+    
+    document.body.appendChild(bg);
+}
+
+createAnimatedBackground();
+
+// Smooth scroll with progress indicator
+function updateScrollProgress() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    
+    document.querySelector(':root').style.setProperty('--scroll-progress', scrolled + '%');
+}
+
+window.addEventListener('scroll', updateScrollProgress);
+
+// Parallax effect for sections
+document.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        const speed = section.dataset.speed || 0.5;
+        const offset = window.pageYOffset;
+        section.style.transform = `translateY(${offset * speed}px)`;
+    });
+});
+
+// Enhanced skill bars animation
+function animateSkillBars() {
+    const skillBars = document.querySelectorAll('.skill-bar');
+    skillBars.forEach(bar => {
+        const progress = bar.querySelector('.progress');
+        const percentage = bar.dataset.percentage || '0';
+        
+        progress.style.width = '0%';
+        progress.style.transition = 'width 1.5s ease-in-out';
+        
+        const percentageEl = document.createElement('span');
+        percentageEl.className = 'percentage';
+        percentageEl.textContent = percentage + '%';
+        bar.appendChild(percentageEl);
+        
+        setTimeout(() => {
+            progress.style.width = percentage + '%';
+        }, 100);
+    });
+}
+
+// Initialize animations when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    animateSkillBars();
+    createAnimatedBackground();
+});
+
+// Ripple effect for buttons
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${e.clientX - rect.left - size/2}px`;
+        ripple.style.top = `${e.clientY - rect.top - size/2}px`;
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
+
+// Form validation feedback
+document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+    input.addEventListener('blur', function() {
+        const formGroup = this.closest('.form-group');
+        if (this.value.trim() !== '') {
+            formGroup.classList.add('success');
+            formGroup.classList.remove('error');
+        } else {
+            formGroup.classList.add('error');
+            formGroup.classList.remove('success');
+        }
+    });
+});
+
+// Success message handler
+function showSuccessMessage(message) {
+    const successMsg = document.createElement('div');
+    successMsg.classList.add('success-message');
+    successMsg.textContent = message;
+    document.body.appendChild(successMsg);
+    
+    setTimeout(() => successMsg.classList.add('show'), 100);
+    setTimeout(() => {
+        successMsg.classList.remove('show');
+        setTimeout(() => successMsg.remove(), 300);
+    }, 3000);
+}
+
+// Add loading state to buttons
+function setLoadingState(button, isLoading) {
+    if (isLoading) {
+        button.classList.add('loading');
+        button.disabled = true;
+    } else {
+        button.classList.remove('loading');
+        button.disabled = false;
+    }
+}
+
+// Add tooltips to social links
+document.querySelectorAll('.social-links a').forEach(link => {
+    const tooltip = link.getAttribute('title');
+    if (tooltip) {
+        link.setAttribute('data-tooltip', tooltip);
+        link.removeAttribute('title');
+    }
+});
+
+// Enhanced Form Validation
+function validateForm() {
+    const inputs = document.querySelectorAll('.form-group input, .form-group textarea');
+    let isValid = true;
+
+    inputs.forEach(input => {
+        const formGroup = input.closest('.form-group');
+        const value = input.value.trim();
+        
+        if (input.type === 'email') {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(value)) {
+                setInputError(formGroup, 'Please enter a valid email');
+                isValid = false;
+            } else {
+                setInputSuccess(formGroup);
+            }
+        } else if (value === '') {
+            setInputError(formGroup, 'This field is required');
+            isValid = false;
+        } else {
+            setInputSuccess(formGroup);
+        }
+    });
+
+    return isValid;
+}
+
+function setInputError(formGroup, message) {
+    formGroup.classList.add('error');
+    formGroup.classList.remove('success');
+    const feedback = formGroup.querySelector('.feedback') || createFeedbackElement(formGroup);
+    feedback.textContent = message;
+    feedback.className = 'feedback error';
+}
+
+function setInputSuccess(formGroup) {
+    formGroup.classList.add('success');
+    formGroup.classList.remove('error');
+    const feedback = formGroup.querySelector('.feedback');
+    if (feedback) feedback.remove();
+}
+
+// Enhanced Button Interactions
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('mouseenter', createButtonGlow);
+    button.addEventListener('mouseleave', removeButtonGlow);
+});
+
+function createButtonGlow(e) {
+    const button = e.target;
+    const glow = document.createElement('div');
+    glow.className = 'button-glow';
+    button.appendChild(glow);
+}
+
+function removeButtonGlow(e) {
+    const button = e.target;
+    const glow = button.querySelector('.button-glow');
+    if (glow) {
+        glow.addEventListener('transitionend', () => glow.remove());
+        glow.style.opacity = '0';
+    }
+}
+
+// 3D Tilt Effect for Portfolio Cards
+function initPortfolioTilt() {
+    const cards = document.querySelectorAll('.portfolio-item');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', handleTilt);
+        card.addEventListener('mouseenter', handleMouseEnter);
+        card.addEventListener('mouseleave', handleMouseLeave);
+    });
+}
+
+function handleTilt(e) {
+    const card = e.currentTarget;
+    const cardRect = card.getBoundingClientRect();
+    const cardWidth = cardRect.width;
+    const cardHeight = cardRect.height;
+    const centerX = cardRect.left + cardWidth / 2;
+    const centerY = cardRect.top + cardHeight / 2;
+    const mouseX = e.clientX - centerX;
+    const mouseY = e.clientY - centerY;
+    const rotateX = (-mouseY / (cardHeight / 2)) * 10; // Max 10 degrees
+    const rotateY = (mouseX / (cardWidth / 2)) * 10; // Max 10 degrees
+
+    card.style.transform = `
+        perspective(1000px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        translateZ(50px)
+    `;
+
+    // Update shine effect position
+    const shine = card.querySelector('.shine-effect');
+    if (shine) {
+        const moveX = (mouseX / cardWidth) * 150;
+        const moveY = (mouseY / cardHeight) * 150;
+        shine.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    }
+}
+
+function handleMouseEnter(e) {
+    const card = e.currentTarget;
+    card.style.transition = 'none'; // Remove transition for smooth tilt
+    
+    // Add shine effect
+    if (!card.querySelector('.shine-effect')) {
+        const shine = document.createElement('div');
+        shine.className = 'shine-effect';
+        card.appendChild(shine);
+    }
+}
+
+function handleMouseLeave(e) {
+    const card = e.currentTarget;
+    card.style.transition = 'all 0.5s var(--transition-timing)';
+    card.style.transform = `
+        perspective(1000px)
+        rotateX(0)
+        rotateY(0)
+        translateZ(0)
+    `;
+    
+    // Remove shine effect
+    const shine = card.querySelector('.shine-effect');
+    if (shine) {
+        shine.remove();
+    }
+}
+
+// Initialize tilt effect when DOM is loaded
+document.addEventListener('DOMContentLoaded', initPortfolioTilt); 
