@@ -8,11 +8,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div class="preloader">
+        <div class="loader">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar"></div>
+    </div>
+
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">MR</div>
-            <div class="profile-container">
-             
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
@@ -26,9 +36,36 @@
         </div>
     </nav>
 
-    <!-- Add a preloader -->
-    <div class="preloader">
-        <div class="loader"></div>
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <div class="sidebar-profile">
+                <img src="./images/avatar.jpg" alt="Mohan Racha" class="sidebar-avatar">
+                <h3>Mohan Racha</h3>
+                <p class="sidebar-title">Developer</p>
+            </div>
+            <div class="sidebar-info">
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:mohan.student51@gmail.com">mohan.student51@gmail.com</a>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+919502084377">+91 9502084377</a>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Amalapuram, Andhra Pradesh, India</span>
+                </div>
+            </div>
+            <div class="sidebar-social">
+                <a href="https://linkedin.com/in/Mohanracha" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/mohanracha/" target="_blank" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
     </div>
 
     <section id="home" class="hero">
@@ -132,39 +169,107 @@
         </section>
     </section>
     
-    <div class="service-list">
-        <div class="service-item">
-            <div class="skill-category">
-                <h4>Programming Languages</h4>
-                <div class="skills-list">
-                    <div class="skills-item">
-                        <div class="skill-title-wrapper">
-                            <h5 class="skill-title">Python</h5>
-                            <span class="skill-percentage">90%</span>
-                        </div>
-                        <div class="skill-progress-bar">
-                            <div class="skill-progress-fill" style="--progress: 90%"></div>
-                        </div>
+    <div class="skills-container">
+        <div class="skills-category">
+            <h3><i class="fas fa-code"></i> Programming Languages</h3>
+            <div class="skills-list">
+                <div class="skills-item">
+                    <div class="skill-title-wrapper">
+                        <h4 class="skill-title">Python</h4>
+                        <span class="skill-percentage">85%</span>
                     </div>
-                    <!-- Add more skills similarly -->
+                    <div class="skill-progress-bar">
+                        <div class="skill-progress-fill" style="--progress: 0.85"></div>
+                    </div>
+                    <div class="skill-tags">
+                        <span>Data Structures</span>
+                        <span>OOP</span>
+                        <span>NumPy</span>
+                    </div>
+                </div>
+
+                <div class="skills-item">
+                    <div class="skill-title-wrapper">
+                        <h4 class="skill-title">C Programming</h4>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                    <div class="skill-progress-bar">
+                        <div class="skill-progress-fill" style="--progress: 0.80"></div>
+                    </div>
+                    <div class="skill-tags">
+                        <span>Algorithms</span>
+                        <span>Memory Management</span>
+                        <span>Problem Solving</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="service-item">
-            <div class="skill-category">
-                <h4>Web Technologies</h4>
-                <div class="skills-list">
-                    <!-- Add web technology skills -->
+        <div class="skills-category">
+            <h3><i class="fas fa-globe"></i> Web Development</h3>
+            <div class="skills-list">
+                <div class="skills-item">
+                    <div class="skill-title-wrapper">
+                        <h4 class="skill-title">HTML5 & CSS3</h4>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-progress-bar">
+                        <div class="skill-progress-fill" style="--progress: 0.90"></div>
+                    </div>
+                    <div class="skill-tags">
+                        <span>Responsive Design</span>
+                        <span>Flexbox</span>
+                        <span>Grid</span>
+                        <span>Animations</span>
+                    </div>
+                </div>
+
+                <div class="skills-item">
+                    <div class="skill-title-wrapper">
+                        <h4 class="skill-title">JavaScript</h4>
+                        <span class="skill-percentage">75%</span>
+                    </div>
+                    <div class="skill-progress-bar">
+                        <div class="skill-progress-fill" style="--progress: 0.75"></div>
+                    </div>
+                    <div class="skill-tags">
+                        <span>ES6+</span>
+                        <span>DOM</span>
+                        <span>Async/Await</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="service-item">
-            <div class="skill-category">
-                <h4>Tools & Frameworks</h4>
-                <div class="skills-list">
-                    <!-- Add tools and frameworks skills -->
+        <div class="skills-category">
+            <h3><i class="fas fa-tools"></i> Developer Tools & Technologies</h3>
+            <div class="skills-list">
+                <div class="skills-item">
+                    <div class="skill-title-wrapper">
+                        <h4 class="skill-title">Git & GitHub</h4>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                    <div class="skill-progress-bar">
+                        <div class="skill-progress-fill" style="--progress: 0.80"></div>
+                    </div>
+                    <div class="skill-tags">
+                        <span>Version Control</span>
+                        <span>Collaboration</span>
+                    </div>
+                </div>
+
+                <div class="skills-item">
+                    <div class="skill-title-wrapper">
+                        <h4 class="skill-title">VS Code & IDEs</h4>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                    <div class="skill-progress-bar">
+                        <div class="skill-progress-fill" style="--progress: 0.85"></div>
+                    </div>
+                    <div class="skill-tags">
+                        <span>Debugging</span>
+                        <span>Extensions</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -233,20 +338,22 @@
                     <p>Amalapuram, Andhra Pradesh, India</p>
                 </div>
             </div>
-            <form class="contact-form">
+            <form class="contact-form" id="contactForm" onsubmit="return sendEmail(event)">
                 <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
+                    <input type="text" id="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" placeholder="Your Email" required>
+                    <input type="email" id="senderEmail" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" placeholder="Subject" required>
+                    <input type="text" id="subject" placeholder="Subject" required>
                 </div>
                 <div class="form-group">
-                    <textarea placeholder="Your Message" required></textarea>
+                    <textarea id="message" placeholder="Your Message" required></textarea>
                 </div>
-                <button type="submit">Send Message</button>
+                <button type="submit" class="btn primary-btn">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
             </form>
         </div>
     </section>
